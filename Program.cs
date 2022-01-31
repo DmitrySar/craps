@@ -20,36 +20,22 @@
  * и некая логика игры (GameLogic)
  */
 
-// refactoring
-
 class Program
 {
     public static void Main()
     {
-        //создаём новую игру
         Craps craps = new Craps(new CubeSystem(new List<Cube> { new Cube(), new Cube() }));
-        //создаём игрока
         Console.Write("Введите имя: ");
         Player player = new Player(Console.ReadLine(), craps);
 
-        //продолжать ли игру
         bool isContinue = true;
-        //цикл пока не закончится игра
         while (isContinue)
         {
-            //Выведем значения и сумму кубиков на консоль
             craps.ToConsole();
-
-            //проверяем логику
             isContinue = !LogicCraps.IsEndOfGame(player, craps);
-
-            //выводим сообщения при проигрыше
             if (player.IsLose) Console.WriteLine($"{player.Name} is Lose.");
-            //выводим сообщение при выигрыше
             else if (player.IsWin) Console.WriteLine($"{player.Name} is Win!!!");
-            //следующий ход
             if (isContinue) player.NextStep();
-        }
-        
+        }      
     }
 }
