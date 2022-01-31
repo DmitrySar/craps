@@ -13,6 +13,9 @@
 
     public void NextStep()
     {
+
+        Console.WriteLine("Press Enter to next step");
+        Console.ReadLine(); 
         game.NextStep();
     }
 

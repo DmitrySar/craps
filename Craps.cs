@@ -37,9 +37,15 @@
     public void NextStep()
     {
         //смена выигрышных и проигрышных сумм
-        winValues = new int[] { 0, cubeSystem.Sum };
-        loseValues = new int[] { 0, 0, 7 };
+        winValues = new int[] { cubeSystem.Sum };
+        loseValues = new int[] { 7 };
         //бросаем кубики
         cubeSystem.Drop();
+    }
+
+    public void ToConsole()
+    {
+        Console.Write(string.Join(' ', Values));
+        Console.WriteLine(" " + Sum);
     }
 }

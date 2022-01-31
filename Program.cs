@@ -20,6 +20,8 @@
  * и некая логика игры (GameLogic)
  */
 
+// refactoring
+
 class Program
 {
     public static void Main()
@@ -35,10 +37,8 @@ class Program
         //цикл пока не закончится игра
         while (isContiniue)
         {
-            //Выведем значения кубиков
-            Console.WriteLine(string.Join(' ', craps.Values));
-            //выведем сумму
-            Console.WriteLine(craps.Sum);
+            //Выведем значения и сумму кубиков на консоль
+            craps.ToConsole();
 
             //проверяем логику
             isContiniue = !LogicCraps.IsEndOfGame(player, craps);
@@ -47,16 +47,9 @@ class Program
             if (player.IsLose) Console.WriteLine($"{player.Name} is Lose.");
             //выводим сообщение при выигрыше
             else if (player.IsWin) Console.WriteLine($"{player.Name} is Win!!!");
-
             //следующий ход
-            if (isContiniue)
-            {
-                Console.WriteLine("Press Enter to next step");
-                Console.ReadLine();
-                player.NextStep();
-            }
+            if (isContiniue) player.NextStep();
         }
         
-
     }
 }
