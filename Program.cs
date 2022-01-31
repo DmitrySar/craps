@@ -33,22 +33,22 @@ class Program
         Player player = new Player(Console.ReadLine(), craps);
 
         //продолжать ли игру
-        bool isContiniue = true;
+        bool isContinue = true;
         //цикл пока не закончится игра
-        while (isContiniue)
+        while (isContinue)
         {
             //Выведем значения и сумму кубиков на консоль
             craps.ToConsole();
 
             //проверяем логику
-            isContiniue = !LogicCraps.IsEndOfGame(player, craps);
+            isContinue = !LogicCraps.IsEndOfGame(player, craps);
 
             //выводим сообщения при проигрыше
             if (player.IsLose) Console.WriteLine($"{player.Name} is Lose.");
             //выводим сообщение при выигрыше
             else if (player.IsWin) Console.WriteLine($"{player.Name} is Win!!!");
             //следующий ход
-            if (isContiniue) player.NextStep();
+            if (isContinue) player.NextStep();
         }
         
     }
